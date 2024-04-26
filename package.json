@@ -1,0 +1,14 @@
+{
+  "name": "mukbang-extension",
+  "version": "1.0.0",
+  "description": "extension",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "yelp-fusion": "^3.0.0"
+  }
+}
