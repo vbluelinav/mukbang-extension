@@ -1,32 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 let restName = '';
 // argument would be name of restaurant
-function fetchData (restName) {
+function fetchData () {
 const apiKey = 'ic79KDMtLm1Tk9-7iz7c6V2o4Z6kvLkieWsW7b4tjoLKF1D72w9pDfIVjYwsLPd3ULhYuw8I8JcluHJROsl4eh3vzm9XE7gNeHL4SJ5yBPtornbFgNL6KVAkgPwqZnYx' //Add your key here
 const options = {method: 'GET', headers: {accept: 'application/json', Authorization: `Bearer ${apiKey}`}};
 
 fetch('https://api.yelp.com/v3/businesses/search?location=Denver&term=pho&radius=39000&sort_by=best_match&limit=50', options)
 .then((response) => {
     return response.json()})
-.then(data => { 
-    //console.log(data)
-    //grab "text-search" from html 
+.then(data => {  
+console.log(data)})
+//     //grab "text-search" from html 
 
-    const displayBox = document.getElementById('restaurant-info')
-    displayBox.innerHTML = '';
-    // iterate through our data and looking for the restaurant name
-    for(let i = 0; i < data.businesses.length; i++) {
-        console.log('console', data.businesses[i].name)
-        // if(data.businesses[i].address){
-            if(data.businesses[i].name == restName) {
-               // console.log(data.businesses[i])
+//     const displayBox = document.getElementById('restaurant-info')
+//     displayBox.innerHTML = '';
+//     // iterate through our data and looking for the restaurant name
+//     for(let i = 0; i < data.businesses.length; i++) {
+//         console.log('console', data.businesses[i].name)
+//         // if(data.businesses[i].address){
+//             if(data.businesses[i].name == restName) {
+//                // console.log(data.businesses[i])
     
-               const restInfo = document.createElement('p');
-                restInfo.textContent = `${data.businesses[i]}`
-                displayBox.appendChild(restInfo)
-            }}
-           // console.log(response.businesses[i].location, 'response', response.businesses)
-        })
+//                const restInfo = document.createElement('p');
+//                 restInfo.textContent = `${data.businesses[i]}`
+//                 displayBox.appendChild(restInfo)
+//             }}
+//            // console.log(response.businesses[i].location, 'response', response.businesses)
+//         })
     // }
     // })
   .catch(err => console.error('fail to fetch', err));
@@ -41,9 +41,9 @@ fetch('https://api.yelp.com/v3/businesses/search?location=Denver&term=pho&radius
 //     console.log(e);
 //   });
     }
-    fetchData(restName);
+    fetchData();
 
-})
+// })
     
 console.log(fetchData('pho haus'))
 
