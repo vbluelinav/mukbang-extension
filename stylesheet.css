@@ -1,0 +1,38 @@
+
+ * {
+        margin: 5px;
+        padding: 0;
+        text-decoration: none;
+        font-family:'Poppins', sans-serif;
+        box-sizing: border-box;
+        list-style: none;
+ }
+
+
+/* head*/
+
+.text-search {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    background: red;
+    align-items: center;
+
+ }
+ 
+ h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    color: yellow;
+   
+ }
+
+#logo {
+    width: 12%;
+    border: red solid;
+    border-radius: 50%;
+}
+
+
+

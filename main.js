@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+let restName = '';
 // argument would be name of restaurant
 function fetchData (restName) {
 const apiKey = 'ic79KDMtLm1Tk9-7iz7c6V2o4Z6kvLkieWsW7b4tjoLKF1D72w9pDfIVjYwsLPd3ULhYuw8I8JcluHJROsl4eh3vzm9XE7gNeHL4SJ5yBPtornbFgNL6KVAkgPwqZnYx' //Add your key here
@@ -10,14 +10,23 @@ fetch('https://api.yelp.com/v3/businesses/search?location=Denver&term=pho&radius
     return response.json()})
 .then(data => { 
     //console.log(data)
-  
-    for(let i = 0; i< data.businesses.length; i++) {
-        if(data.businesses[i].location) {
+    //grab "text-search" from html 
+
+    const displayBox = document.getElementById('restaurant-info')
+    displayBox.innerHTML = '';
+    // iterate through our data and looking for the restaurant name
+    for(let i = 0; i < data.businesses.length; i++) {
+        console.log('console', data.businesses[i].name)
+        // if(data.businesses[i].address){
             if(data.businesses[i].name == restName) {
-                console.log(data.businesses[i])
+               // console.log(data.businesses[i])
+    
+               const restInfo = document.createElement('p');
+                restInfo.textContent = `${data.businesses[i]}`
+                displayBox.appendChild(restInfo)
             }}
            // console.log(response.businesses[i].location, 'response', response.businesses)
-        }})
+        })
     // }
     // })
   .catch(err => console.error('fail to fetch', err));
@@ -32,12 +41,14 @@ fetch('https://api.yelp.com/v3/businesses/search?location=Denver&term=pho&radius
 //     console.log(e);
 //   });
     }
-    fetchData();
+    fetchData(restName);
 
 })
-
+    
+console.log(fetchData('pho haus'))
 
 // copy the text on the web browser to actually search that restaurant in the yelp
+
 
 // set up event listener that happens with right click and select mukbang extension that link
 // to yelp website
@@ -46,5 +57,16 @@ fetch('https://api.yelp.com/v3/businesses/search?location=Denver&term=pho&radius
 /*
 add script with yelp.com
 sync with yelp with api and populate on our html with our own design???
+
+*/
+
+
+/*
+
+once you grab the restName on the browser, 
+eventListener trigger by right click 
+
+fetchData should paas in one argument with restaurnat name 
+it should 
 
 */
